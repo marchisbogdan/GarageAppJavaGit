@@ -16,6 +16,7 @@ import ro.ubbcluj.cs.garage.model.Client;
 public class ClientRepository extends AbstractClientRepository<Client> implements Serializable {
 
 	//Attributes
+	
 	private static final long serialVersionUID = 672204661185784437L;
 
 	//Methods
@@ -51,13 +52,13 @@ public class ClientRepository extends AbstractClientRepository<Client> implement
 			}
 			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			LOGGER.severe("Severe Error:"+e.getMessage());
 			e.printStackTrace();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
+			LOGGER.severe("Severe Error:"+e1.getMessage());
 			e1.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+			LOGGER.severe("Severe Error:"+e.getMessage());
 			e.printStackTrace();
 		}
 		
@@ -84,19 +85,19 @@ public class ClientRepository extends AbstractClientRepository<Client> implement
 			}
 
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			LOGGER.severe("Severe Error:"+e.getMessage());
 			e.printStackTrace();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
+			LOGGER.severe("Severe Error:"+e1.getMessage());
 			e1.printStackTrace();
 		}
 
 	}
 	
-	public void filterByName(String name){
+	public List<Client> filterByName(String name){
 		// Lambda
 		List<Client> clients = elementsList.stream().filter(c -> c.getName().equals(name)).collect(Collectors.toList());
-		clients.forEach(c -> System.out.println(c));
+		return clients;
 	}
 	
 	

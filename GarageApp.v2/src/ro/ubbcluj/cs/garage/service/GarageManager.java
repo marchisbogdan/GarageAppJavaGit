@@ -1,20 +1,29 @@
 package ro.ubbcluj.cs.garage.service;
 
+import java.util.logging.Logger;
+
 import ro.ubbcluj.cs.garage.repository.CarRepository;
 import ro.ubbcluj.cs.garage.repository.ClientRepository;
 
 public class GarageManager {
-	public GarageManager(String name){
-		
+
+	//Attributes
+	private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
+	private String fileName = null;
+	private ClientRepository clientRepo;
+	private CarRepository carRepo;
+	
+	//Methods
+	public GarageManager(String fileName) {
+		this.fileName = fileName;
 	}
 
 	public void setClientRepository(ClientRepository clientRepository) {
-		// TODO Auto-generated method stub
-		
+		this.clientRepo = clientRepository;
 	}
 
 	public void setCarRepository(CarRepository carRepository) {
-		// TODO Auto-generated method stub
-		
+		this.carRepo = carRepository;
 	}
+	
 }

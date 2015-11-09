@@ -2,24 +2,28 @@ package ro.ubbcluj.cs.garage.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import utilities.Repository;
 
 public abstract class AbstractCarRepository<E> implements Repository<E> {
 
+	//Attributes
+	protected static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 	protected int size;
-	protected List<E> elemtsList = new ArrayList<>();
+	protected List<E> elementsList = new ArrayList<>();
 	
+	//Methods
 	@Override
 	public void add(E obj){
-		elemtsList.add(obj);
+		elementsList.add(obj);
 	}
 		
 	@Override
 	public void delete(E obj){
-		for(E element:elemtsList)
+		for(E element:elementsList)
 			if(element.equals(obj))
-				elemtsList.remove(element);
+				elementsList.remove(element);
 	}
 	
 	@Override
@@ -27,7 +31,7 @@ public abstract class AbstractCarRepository<E> implements Repository<E> {
 	
 	@Override
 	public ArrayList<E> returnAll(){
-		return (ArrayList<E>) elemtsList;
+		return (ArrayList<E>) elementsList;
 	}
 	
 	public abstract ArrayList<E> readFromFile(String filename);

@@ -2,12 +2,14 @@ package ro.ubbcluj.cs.garage.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import utilities.Repository;
 
 public abstract class AbstractClientRepository<E> implements Repository<E> {
 
 	//Attributes
+	protected static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
 	protected int size;
 	protected List<E> elementsList = new ArrayList<>();
 	
@@ -17,9 +19,10 @@ public abstract class AbstractClientRepository<E> implements Repository<E> {
 		elementsList.add(obj);
 	}
 	
-	public E searchElement(E element){
-		
-		return null;
+	public boolean searchElement(E element){
+		if (elementsList.contains(element))
+			return true;
+		return false;
 		
 	}
 		

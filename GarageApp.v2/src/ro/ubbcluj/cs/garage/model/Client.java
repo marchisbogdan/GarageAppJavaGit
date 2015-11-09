@@ -5,15 +5,21 @@ import java.util.ArrayList;
 public class Client {
 	private int id;
 	private String name;
-	private Address adress;
+	private Address address;
 	private ArrayList<Car> cars;
 	
-	//nested class Address
+	///////////////nested class Address////////////////////
 	
 	public class Address{
+		//Attributes
 		private int day;
 		private int month;
 		private int year;
+		//Methods
+		@Override
+		public String toString() {
+			return "Address [day=" + day + ", month=" + month + ", year=" + year + "]";
+		}
 		
 		@Override
 		public int hashCode() {
@@ -90,16 +96,19 @@ public class Client {
 		this.name = name;
 	}
 	public Address getAdress() {
-		return adress;
+		return address;
 	}
-	public void setAdress(Address adress) {
-		this.adress = adress;
+	public void setAdress(Address address) {
+		this.address.setDay(address.getDay());
+		this.address.setMonth(address.getMonth());
+		this.address.setYear(address.getYear());
+		
 	}
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((adress == null) ? 0 : adress.hashCode());
+		result = prime * result + ((address == null) ? 0 : address.hashCode());
 		result = prime * result + ((cars == null) ? 0 : cars.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
@@ -114,10 +123,10 @@ public class Client {
 		if (getClass() != obj.getClass())
 			return false;
 		Client other = (Client) obj;
-		if (adress == null) {
-			if (other.adress != null)
+		if (address == null) {
+			if (other.address != null)
 				return false;
-		} else if (!adress.equals(other.adress))
+		} else if (!address.equals(other.address))
 			return false;
 		if (cars == null) {
 			if (other.cars != null)

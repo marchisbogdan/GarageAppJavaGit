@@ -1,9 +1,5 @@
 package cs.ubbcluj.ro.garage.model;
 
-import static org.junit.Assert.*;
-
-import org.junit.Test;
-
 import junit.framework.TestCase;
 import ro.ubbcluj.cs.garage.model.Client;
 

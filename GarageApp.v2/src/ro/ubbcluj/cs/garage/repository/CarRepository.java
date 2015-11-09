@@ -21,7 +21,7 @@ public class CarRepository extends AbstractCarRepository<Car> implements Seriali
 	//Methods
 	public Car findByModel(String model) {
 
-		for (Car car : elemtsList)
+		for (Car car : elementsList)
 			if (car.getModel().equals(model))
 				return car;
 		return null;
@@ -52,13 +52,13 @@ public class CarRepository extends AbstractCarRepository<Car> implements Seriali
 			}
 
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			LOGGER.severe("Severe Error:"+e.getMessage());
 			e.printStackTrace();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
+			LOGGER.severe("Severe Error:"+e1.getMessage());
 			e1.printStackTrace();
 		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
+			LOGGER.severe("Severe Error:"+e.getMessage());
 			e.printStackTrace();
 		}
 
@@ -76,19 +76,20 @@ public class CarRepository extends AbstractCarRepository<Car> implements Seriali
 		try (FileOutputStream fileStream = new FileOutputStream(filename);
 				ObjectOutputStream outputStream = new ObjectOutputStream(fileStream)) {
 
-			this.size = elemtsList.size();
+			this.size = elementsList.size();
 
 			outputStream.writeInt(this.size);
 
-			for (Car car : elemtsList) {
+			for (Car car : elementsList) {
 				outputStream.writeObject(car);
 			}
+			
 
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
+			LOGGER.severe("Severe Error:"+e.getMessage());
 			e.printStackTrace();
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
+			LOGGER.severe("Severe Error:"+e1.getMessage());
 			e1.printStackTrace();
 		}
 
@@ -96,14 +97,14 @@ public class CarRepository extends AbstractCarRepository<Car> implements Seriali
 
 	public List<Car> filterByType(String type) {
 		// Lambda
-		List<Car> cars = elemtsList.stream().filter(c -> c.getType().equals(type)).collect(Collectors.toList());
+		List<Car> cars = elementsList.stream().filter(c -> c.getType().equals(type)).collect(Collectors.toList());
 		return cars;
 		
 	}
 
 	public List<Car> filterByModel(String model) {
 		// Lambda
-		List<Car> cars = elemtsList.stream().filter(c -> c.getModel().equals(model)).collect(Collectors.toList());
+		List<Car> cars = elementsList.stream().filter(c -> c.getModel().equals(model)).collect(Collectors.toList());
 		return cars;
 	}
 }

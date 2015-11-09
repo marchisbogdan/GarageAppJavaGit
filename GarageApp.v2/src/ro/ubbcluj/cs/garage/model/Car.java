@@ -4,11 +4,13 @@ public class Car {
 	private int id;
 	private String model;
 	private String type;
+	private boolean functional;
 	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + (functional ? 1231 : 1237);
 		result = prime * result + id;
 		result = prime * result + ((model == null) ? 0 : model.hashCode());
 		result = prime * result + ((type == null) ? 0 : type.hashCode());
@@ -23,6 +25,8 @@ public class Car {
 		if (getClass() != obj.getClass())
 			return false;
 		Car other = (Car) obj;
+		if (functional != other.functional)
+			return false;
 		if (id != other.id)
 			return false;
 		if (model == null) {
@@ -54,5 +58,11 @@ public class Car {
 	}
 	public void setType(String type) {
 		this.type = type;
+	}
+	public boolean isFunctional() {
+		return functional;
+	}
+	public void setFunctional(boolean functional) {
+		this.functional = functional;
 	}
 }
